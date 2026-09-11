@@ -1,26 +1,18 @@
-// Níveis de prioridade disponíveis para as tarefas.
+
 const PRIORITIES = [
   { value: 'alta', label: 'alta' },
   { value: 'media', label: 'média' },
   { value: 'baixa', label: 'baixa' },
 ]
 
-// Formata a data (YYYY-MM-DD do input) para o padrão brasileiro dd/mm/aaaa.
+
 function formatarData(dataISO) {
   if (!dataISO) return ''
   const [ano, mes, dia] = dataISO.split('-')
   return `${dia}/${mes}/${ano}`
 }
 
-/**
- * TaskItem
- * -----------------------------------------------------------------------
- * Representa uma única linha da lista. Recebe a tarefa e dois CALLBACKS
- * (`onToggle` e `onRemove`), que na verdade são funções repassadas por
- * TaskList — que por sua vez as recebeu de App. Essa cadeia de callbacks
- * é comum em React: cada componente só conhece a função que precisa
- * chamar, sem saber como o estado é atualizado por trás.
- */
+
 function TaskItem({ tarefa, onToggle, onRemove }) {
   const prioridadeInfo = PRIORITIES.find((p) => p.value === tarefa.prioridade)
 
