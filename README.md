@@ -1,16 +1,47 @@
-# React + Vite
+# Lista de Tarefas do Programador
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto em **React + Vite** para gerenciamento de tarefas, com persistência em `localStorage` e visual inspirado em editor de código.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Cadastro de tarefas com **Nome, Data, Descrição e Prioridade** (alta/média/baixa).
+- Marcar tarefa como concluída e remover tarefas.
+- Filtros rápidos: `all()`, `pending()`, `done()`.
+- Persistência automática no `localStorage` (os dados continuam lá mesmo depois de fechar o navegador).
+- Código comentado nos pontos que usam **Hooks** (`useState`, `useEffect`, `useCallback`, hook customizado `useLocalStorage`), **métodos de array** (`map`, `filter`) e **callbacks** entre componentes.
 
-## React Compiler
+## Como rodar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Depois abra o endereço mostrado no terminal (normalmente `http://localhost:5173`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Para gerar a versão de produção:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Estrutura do projeto
+
+```
+src/
+├── App.jsx                 # componente raiz: guarda o estado global das tarefas
+├── index.css                # reset + tokens de cor/tipografia + todos os estilos do app
+├── main.jsx                 # ponto de entrada do React
+├── useLocalStorage.js       # hook customizado: useState + useEffect com persistência
+└── components/
+    ├── Header.jsx           # cabeçalho com contadores
+    ├── TaskForm.jsx         # formulário de cadastro (componente controlado)
+    ├── TaskFilters.jsx      # botões de filtro (todas/pendentes/concluídas)
+    ├── TaskList.jsx         # aplica filter + map sobre a lista de tarefas
+    └── TaskItem.jsx         # renderiza uma tarefa individual
+```
+
+Projeto feito por Guilherme Kooji Kubota FIAP RM:570541
+Repositório GITHUB: https://github.com/gkooji/Lista-de-Tarefas-de-um-Programador
+Link Vercel: https://lista-tarefas-one-pi.vercel.app/
